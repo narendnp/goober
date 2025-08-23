@@ -1,0 +1,23 @@
+[project]
+name = "goober"
+version = "0.1.0"
+description = "Transcribe and translate your video locally."
+readme = "README.md"
+requires-python = "==3.10.18"
+dependencies = [
+    "argostranslate>=1.9.6",
+    "faster-whisper>=1.2.0",
+    "hf-xet>=1.1.8",
+    "srt>=3.5.3",
+    # "tqdm>=4.67.1",
+    "tqdm>=4.66.5",
+    # For Opus-MT script
+    "easynmt>=2.0.2",
+    "nltk>=3.9.1",
+    "torch==2.8.0+cu129",
+    "torchaudio==2.8.0+cu129",
+    "torchvision==0.23.0+cu129",
+]
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cu129"
