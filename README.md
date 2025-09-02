@@ -1,8 +1,10 @@
 # Goober - Local Video Transcription & Translation
 
-A powerful, privacy-focused tool for transcribing and translating videos locally using OpenAI Whisper and ML-powered Argos Translate and Opus-MT translation engine.  
-No internet required - everything is processed locally!
+A simple python script for transcribing and translating videos locally, combining Faster-Whisper transcription capability with Argos Translate/Opus-MT translation engine.  
 
+No internet required* - everything is processed locally!  
+<small> <span style="color:gray" >**after the dependencies and models are downloaded*
+</span></small>
 ## 🚀 Features
 
 - **Local Processing**: Everything runs on your machine - no data sent to external servers
@@ -12,17 +14,11 @@ No internet required - everything is processed locally!
   - **Opus-MT**: High-quality translation (requires more resources)
 - **Voice Activity Detection (VAD)**: Smart speech detection for better transcription accuracy
 
-## 📋 Requirements
+## 📋 Prerequisites
 
-### System Requirements
-- **Python**: 3.10.18 (specifically this version due to dependency constraints)
+- **Python** 3.10.18 (specifically this version due to dependency constraints)
 - **FFmpeg**: For audio extraction from videos
 - **NVIDIA GPU** (recommended): For CUDA acceleration (CPU mode also supported)
-
-### Hardware Recommendations
-- **Minimum**: 4GB RAM, modern CPU
-- **Recommended**: 8GB+ RAM, NVIDIA GPU with 6GB+ VRAM
-- **For Opus-MT**: 16GB+ RAM recommended due to larger model size
 
 ## 📄 Quick Start
 
@@ -34,7 +30,7 @@ cd goober
 uv venv --python 3.10.18
 
 # 3. Activate the virtual environment
-./venv/bin/activate
+./venv/Scripts/activate
 
 # 4. Sync dependencies
 uv sync
@@ -42,6 +38,9 @@ uv sync
 # 5. Run interactive mode
 uv run python main.py
 ```
+
+> [!NOTE]  
+> First run may take longer due to model downloads. All models are cached locally for future use.
 
 ## 🛠️ Installation
 
@@ -52,21 +51,21 @@ This project uses `uv` for fast Python package management:
 # Install uv if you don't have it
 curl -LsSf https://astral.sh/uv/install.sh | sh  # bash
 # or
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"  # PowerShell
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"  # PowerShell
 
 # Clone this repository
 git clone https://github.com/narendnp/goober
 
 # Navigate to project directory
-cd path/to/goober
+cd goober
 
 # Create a virtual environment
 uv venv --python 3.10.18
 
 # Activate the virtual environment
-./venv/bin/activate  # bash
+./venv/Scripts/activate  # bash
 # or
-./venv/bin/activate.ps1  # PowerShell
+./venv/Scripts/activate.ps1  # PowerShell
 
 # Install dependencies
 uv sync
@@ -76,7 +75,7 @@ uv sync
 > Make sure you have correct CUDA version for your GPU defined on the `pyproject.toml` file before running `uv sync`. For more information, go [here](https://pytorch.org/get-started/locally/).
 
 ### 2. Install FFmpeg
-Download and install FFmpeg for your operating system:
+You can skip this step if you already have FFmpeg installed and configured on your system's PATH.
 
 **Windows**:
 - Download the library [here](https://ffmpeg.org/download.html)
@@ -124,6 +123,7 @@ For GPU acceleration, ensure you have:
 > [!NOTE]  
 > Make sure you have correct CUDA version for your GPU defined on the `pyproject.toml` file. For more information, go [here](https://pytorch.org/get-started/locally/).
 
+
 ## 🎯 Usage
 
 ### Interactive Mode
@@ -162,6 +162,9 @@ uv run src/tl_opus.py "path/to/video.mp4" \
   --vad-threshold 0.5
 ```
 
+> [!NOTE]  
+> First run may take longer due to model downloads. All models are cached locally for future use.
+
 ## ⚙️ Configuration Options
 
 ### Common Parameters
@@ -184,18 +187,9 @@ uv run src/tl_opus.py "path/to/video.mp4" \
 
 ## 🌍 Supported Languages
 
-### Transcription (Faster-Whisper)
-Supports 99+ languages including:
-- English (`en`), Spanish (`es`), French (`fr`), German (`de`)
-- Japanese (`ja`), Chinese (`zh`), Korean (`ko`)
-- Indonesian (`id`), Arabic (`ar`), Hindi (`hi`)
-- And many more...
+Faster-Whisper, Argos Translate, and Opus-MT generally support a wide array of languages.  
 
-### Translation Languages
-**Argos Translate**: 1000+ language pairs
-**Opus-MT**: 2000+ language pairs including rare languages
-
-Popular language codes:
+These are some of the popular language codes:
 - English: `en`
 - Indonesian: `id`
 - Spanish: `es`
@@ -205,6 +199,8 @@ Popular language codes:
 - Chinese: `zh`
 - Korean: `ko`
 - Arabic: `ar`
+
+Please refer to the respective library's documentation for more details.
 
 ## 📁 Output Files
 
@@ -226,12 +222,14 @@ The tool generates two subtitle files on the directory of the video file:
 - Check installation: `ffmpeg -version`
 
 **3. Failed to build/install fasttext libary (Windows)**  
-- Try installing it using the pre-built wheel (credit to [FKz11](https://github.com/FKz11/fasttext-0.9.3-windows-wheels)).  
-Inside the directory, run:
+- Try installing it using the pre-built wheel (credit to [FKz11](https://github.com/FKz11/fasttext-0.9.3-windows-wheels))  
+
+  Inside the directory, run:
+
     ```bash
     uv pip install https://github.com/FKz11/fasttext-0.9.3-windows-wheels/releases/download/0.9.3/fasttext-0.9.3-cp310-cp310-win_amd64.whl
     ```
-- Then re-run `uv sync`.
+- Then re-run `uv sync`
 
 **4. "Translation model not available"**
 - Argos Translate models download automatically
@@ -268,6 +266,3 @@ This project is open source. Please check the license file for details.
 - **[FFmpeg](https://ffmpeg.org/)**: For audio/video processing
 - **[UV](https://github.com/astral-sh/uv)**: For fast Python dependency management
 
----
-
-**Note**: First run may take longer due to model downloads. All models are cached locally for future use.
