@@ -3,7 +3,8 @@
 A simple python script for transcribing and translating videos locally, combining Faster-Whisper transcription capability with Argos Translate/Opus-MT translation engine.  
 
 No internet required* - everything is processed locally!  
-<small> <span style="color:gray" >**after the dependencies and models are downloaded*
+<small><span style="color:gray" >
+**after the dependencies and models are downloaded*
 </span></small>
 
 
@@ -91,7 +92,7 @@ For GPU acceleration, ensure you have:
 ## Usage
 
 ### Interactive Mode
-Inside the virtual environment, run the main script for an easy-to-use interactive interface:
+Inside the virtual environment, run the main script:
 
 ```bash
 uv run python main.py
@@ -149,7 +150,7 @@ uv run src/tl_opus.py "path/to/video.mp4" \
 ### Opus-MT Specific
 - `--batch-size`: Translation batch size (default: 32)
 
-## 🌍 Supported Languages
+## Supported Languages
 
 Faster-Whisper, Argos Translate, and Opus-MT generally support a wide array of languages.  
 
@@ -184,7 +185,7 @@ The tool generates two subtitle files on the directory of the video file:
       ```
   - Re-run `uv sync`
 
-## 🤔 FAQ
+## FAQ
 
 **Q: Why is it named goober?**  
 A: Because I can see how gooners would use this to generate subtitles to watch JAV. (*I know this doesn't explain it but I just think it's funny*).
@@ -199,9 +200,9 @@ MIT License. See `LICENSE` file for details.
 
 ## Acknowledgments
 
-- **[Faster-Whisper](https://github.com/SYSTRAN/faster-whisper)**: For fast, accurate transcription
-- **[Argos Translate](https://github.com/argosopentech/argos-translate)**: For fast translation capabilities
-- **[Opus-MT](https://github.com/Helsinki-NLP/Opus-MT)**: For high-quality translation models
-- **[FFmpeg](https://ffmpeg.org/)**: For audio/video processing
-- **[UV](https://github.com/astral-sh/uv)**: For fast Python dependency management
+- **[Faster-Whisper](https://github.com/SYSTRAN/faster-whisper)**: Speech-to-text transcription
+- **[Argos Translate](https://github.com/argosopentech/argos-translate)**: Fast translation library
+- **[Opus-MT](https://github.com/Helsinki-NLP/Opus-MT)**: High-quality translation models
+- **[FFmpeg](https://ffmpeg.org/)**: Audio/video processing
+- **[UV](https://github.com/astral-sh/uv)**: Ultra-fast Python dependency management
 
